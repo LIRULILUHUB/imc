@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio Link</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, rgba(255, 182, 193, 0.5), rgba(255, 105, 180, 0.5)); /* พื้นหลังสีชมพูมัว */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: #4a148c; /* สีม่วงเข้ม */
+            overflow: hidden; /* ป้องกันการเลื่อน */
+            height: 100vh; /* ทำให้เต็มหน้าจอ */
+            margin: 0; /* ลบ margin ของ body */
+            position: relative; /* สำหรับเอฟเฟคแสง */
+        }
+
+        .marquee {
+            font-size: 2.5em;
+            color: transparent; /* ทำให้ข้อความโปร่งใส */
+            position: relative; /* สำหรับการเลื่อน */
+            overflow: hidden; /* ป้องกันการเลื่อน */
+            white-space: nowrap; /* ป้องกันการตัดบรรทัด */
+        }
+
+        .marquee::before {
+            content: "WELCOME! IMC PAGE✨❤️"; /* ข้อความที่จะแสดง */
+            position: absolute;
+            left: 100%; /* เริ่มจากด้านขวา */
+            animation: slide 10s linear infinite; /* เอฟเฟคเลื่อน */
+            background: linear-gradient(90deg, #ff0080, #ff8c00, #ffd700, #00ff00, #00ffff, #0000ff, #800080); /* สีรุ้ง */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(0); /* เริ่มจากด้านขวา */
+            }
+            100% {
+                transform: translateX(-100%); /* เลื่อนไปด้านซ้าย */
+            }
+        }
+
+        .container {
+            margin-top: 50px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.8); /* พื้นหลังสีขาวมัว */
+            border: 2px solid rgba(255, 105, 180, 1); /* ขอบสีชมพู */
+            width: 300px; /* กำหนดความกว้างของกรอบ */
+            margin-left: auto; /* จัดกลาง */
+            margin-right: auto; /* จัดกลาง */
+            position: relative; /* สำหรับเอฟเฟคแสง */
+            overflow: hidden; /* ป้องกันการเลื่อน */
+        }
+
+        .profile-image {
+            width: 100px; /* ขนาดของรูปโปรไฟล์ */
+            height: 100px; /* ขนาดของรูปโปรไฟล์ */
+            border-radius: 50%; /* ทำให้เป็นวงกลม */
+            margin-bottom: 20px; /* ระยะห่างด้านล่าง */
+            border: 3px solid rgba(255, 105, 180, 1); /* ขอบสีชมพู */
+            object-fit: cover; /* ป้องกันการเบี้ยวของภาพ */
+        }
+
+        a {
+            display: block;
+            margin: 10px 0; /* ระยะห่างระหว่างปุ่ม */
+            padding: 15px 0; /* ปรับ padding ให้เท่ากัน */
+            text-decoration: none;
+            color: #4a148c; /* สีม่วงเข้ม */
+            background-color: rgba(255, 255, 255, 0.9); /* พื้นหลังปุ่มสีขาวโปร่งแสง */
+            border-radius: 5px;
+            border: 2px solid rgba(255, 105, 180, 0.8); /* ขอบสีชมพู */
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* เอฟเฟคการเปลี่ยนสี */
+            font-size: 1.2em; /* ขนาดตัวอักษร */
+            width: 100%; /* กำหนดความกว้างของปุ่มให้พอดีกับกรอบ */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* เงา */
+            position: relative; /* สำหรับเอฟเฟค */
+            z-index: 1; /* อยู่ด้านหน้า */
+        }
+
+        a:hover {
+            background-color: rgba(255, 228, 225, 0.9); /* สีชมพูอ่อนเมื่อ hover */
+            transform: translateY(-3px); /* ยกขึ้นเมื่อ hover */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* เงาเมื่อ hover */
+        }
+
+        a:active {
+            transform: translateY(1px); /* เอฟเฟคเมื่อกด */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* เงาเมื่อกด */
+        }
+    </style>
+</head>
+<body>
+    <div class="marquee"></div> <!-- ข้อความที่จะแสดง -->
+    <img src="https://i.imgur.com/8bM36LS.png" alt="Profile Image" class="profile-image"> <!-- รูปโปรไฟล์ -->
+    <div class="container">
+        <a href="https://tiktok.com/@imc72s" target="_blank">TikTok: @imc72s</a>
+        <a href="https://www.instagram.com/imc72s/profilecard/?igsh=MTJ6bGo5ZDYxbjFlNg==" target="_blank">Instagram: @imc72s</a>
+        <a href="https://x.com/imc72s?t=DXMALZZQi0OTLKxF9S8qiQ&s=09" target="_blank">X (Twitter): @imc72s</a>
+    </div>
+</body>
+</html>
