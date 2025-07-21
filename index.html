@@ -6,64 +6,131 @@
   <title>Bio - imc72s</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
-    * { margin:0; padding:0; box-sizing:border-box; transition:all .4s ease; }
+    * {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+      transition: all .4s ease;
+    }
     body {
-      font-family:'Poppins',sans-serif;
-      background:linear-gradient(135deg,#2a1a52,#4e3a8c,#f4f1ea);
-      color:#f0e6d2; min-height:100vh; display:flex;
-      justify-content:center; align-items:center;
-      padding:2rem; overflow-x:hidden;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #2a1a52, #4e3a8c, #f4f1ea);
+      color: #f0e6d2;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      overflow-x: hidden;
+      flex-direction: column;
     }
     .container {
-      background:rgba(45,32,90,0.85); max-width:420px;
-      width:100%; border-radius:25px;
-      box-shadow:0 0 25px rgba(100,72,190,0.6);
-      padding:2.5rem 2rem; text-align:center;
-      position:relative; overflow:hidden;
-      backdrop-filter:blur(15px);
-      animation:fadeInUp 1s ease forwards;
+      background: rgba(45,32,90,0.85);
+      max-width: 420px;
+      width: 100%;
+      border-radius: 25px;
+      box-shadow: 0 0 25px rgba(100,72,190,0.6);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(15px);
+      animation: fadeInUp 1s ease forwards;
     }
     .container::before {
-      content:''; position:absolute; top:-50%; left:-50%;
-      width:200%; height:200%;
-      background:linear-gradient(45deg,#9b5de5,#5a3eaa,#f3e8ff,#7c3aed);
-      animation:rotate 12s linear infinite;
-      filter:blur(40px); z-index:0;
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: linear-gradient(45deg, #9b5de5, #5a3eaa, #f3e8ff, #7c3aed);
+      animation: rotate 12s linear infinite;
+      filter: blur(40px);
+      z-index: 0;
     }
-    .container>* { position:relative; z-index:1; }
-    @keyframes rotate { 0%{transform:rotate(0deg);}100%{transform:rotate(360deg);} }
-    @keyframes fadeInUp { 0%{opacity:0;transform:translateY(40px);}100%{opacity:1;transform:translateY(0);} }
+    .container > * {
+      position: relative;
+      z-index: 1;
+      transition: all 0.5s ease;
+    }
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
     .profile-img {
-      width:150px; height:150px; margin:0 auto 1.6rem;
-      border-radius:50%; border:5px solid #9b5de5;
-      box-shadow:0 0 30px #7c3aedaa; object-fit:cover;
-      animation:pulseGlow 3s ease-in-out infinite;
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 1.6rem;
+      border-radius: 50%;
+      border: 5px solid #9b5de5;
+      box-shadow: 0 0 30px #7c3aedaa;
+      object-fit: cover;
+      animation: pulseGlow 3s ease-in-out infinite;
     }
     @keyframes pulseGlow {
-      0%,100%{box-shadow:0 0 30px #7c3aedaa; transform:scale(1);}
-      50%{box-shadow:0 0 50px #d6bfffcc; transform:scale(1.05);}
+      0%, 100% { box-shadow: 0 0 30px #7c3aedaa; transform: scale(1); }
+      50% { box-shadow: 0 0 50px #d6bfffcc; transform: scale(1.05); }
     }
-    h1 { font-weight:600; font-size:2rem; color:#f4f1ea; text-shadow:0 0 10px #9b5de5; margin-bottom:.3rem;}
-    p.bio-text { font-weight:300; font-size:1rem; color:#d8d2c4; margin-bottom:2rem; text-shadow:0 0 6px #5a3eaaaa; line-height:1.4;}
-    .social-links { display:flex; justify-content:center; gap:25px; }
+    h1 {
+      font-weight: 600;
+      font-size: 2rem;
+      color: #f4f1ea;
+      text-shadow: 0 0 10px #9b5de5;
+      margin-bottom: .3rem;
+    }
+    p.bio-text {
+      font-weight: 300;
+      font-size: 1rem;
+      color: #d8d2c4;
+      margin-bottom: 2rem;
+      text-shadow: 0 0 6px #5a3eaaaa;
+      line-height: 1.4;
+    }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+    }
     .social-links a {
-      position:relative;
-      display:flex; align-items:center; justify-content:center;
-      width:55px; height:55px; border-radius:50%;
-      overflow:hidden; cursor:pointer;
-      transition:all .3s ease;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all .3s ease;
     }
-    .social-links a:hover { transform:scale(1.2) rotate(10deg); }
+    .social-links a:hover {
+      transform: scale(1.2) rotate(10deg);
+    }
     .social-links img {
-      width:28px; height:28px;
+      width: 28px;
+      height: 28px;
+    }
+    audio {
+      margin-top: 2rem;
+      width: 90%;
+      max-width: 400px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #7c3aedaa;
+    }
+    .hint {
+      font-size: 0.9rem;
+      color: #ccc;
+      margin-top: 0.5rem;
+      display: none;
     }
   </style>
 </head>
 <body>
   <div class="container" role="main" aria-label="User bio and social links">
     <img
-      src="https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/2ce776fd9d749cf001429d01929d1068~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=9df53eed&x-expires=1753257600&x-signature=tAQIofCtWw74BAoaIEEF5qymV%2Bg%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my" 
-    alt="Profile picture of imc72s"
+      src="https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/2ce776fd9d749cf001429d01929d1068~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=9df53eed&x-expires=1753257600&x-signature=tAQIofCtWw74BAoaIEEF5qymV%2Bg%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my"
       alt="Profile picture of imc72s"
       class="profile-img"
       loading="lazy"
@@ -72,16 +139,40 @@
     <p class="bio-text">🤍WELCOME!🤍<br>! FOLLOW ME ON !</p>
 
     <nav class="social-links" aria-label="Social media links">
-      <a href="https://tiktok.com/@imc72s" target="_blank" rel="noopener noreferrer" data-tooltip="TikTok">
+      <a href="https://tiktok.com/@imc72s" target="_blank" rel="noopener noreferrer">
         <img src="https://i.ibb.co/Xfdj4RZh/63-20250721174435.png" alt="TikTok icon">
       </a>
-      <a href="https://www.instagram.com/imc72s/" target="_blank" rel="noopener noreferrer" data-tooltip="Instagram">
+      <a href="https://www.instagram.com/imc72s/" target="_blank" rel="noopener noreferrer">
         <img src="https://i.ibb.co/nN2cnmC7/63-20250721174458.png" alt="Instagram icon">
       </a>
-      <a href="https://x.com/imc72s" target="_blank" rel="noopener noreferrer" data-tooltip="X (Twitter)">
+      <a href="https://x.com/imc72s" target="_blank" rel="noopener noreferrer">
         <img src="https://i.ibb.co/8QX4p2G/63-20250721174520.png" alt="X icon">
       </a>
     </nav>
+
+    <!-- ปุ่มควบคุมเสียง -->
+    <audio id="bg-music" controls loop></audio>
+    <p class="hint" id="hint">WEBSITE MADE BY @IMC72S</p>
   </div>
+
+  <script>
+    const audioElement = document.getElementById('bg-music');
+    const hint = document.getElementById('hint');
+
+    fetch('https://github.com/LIRULILUHUB/Assets-SS/raw/refs/heads/main/2%20phut%20funk.mp3')
+      .then(response => {
+        if (!response.ok) throw new Error('โหลดเสียงไม่ได้');
+        return response.blob();
+      })
+      .then(blob => {
+        const url = URL.createObjectURL(blob);
+        audioElement.src = url;
+        return audioElement.play();
+      })
+      .catch(err => {
+        console.warn('เบราว์เซอร์อาจบล็อก autoplay:', err);
+        hint.style.display = 'block';
+      });
+  </script>
 </body>
 </html>
