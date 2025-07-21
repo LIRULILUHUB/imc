@@ -9,7 +9,7 @@
     * {
       margin: 0; padding: 0;
       box-sizing: border-box;
-      transition: all .4s ease;
+      transition: all 0.4s ease;
     }
     body {
       font-family: 'Poppins', sans-serif;
@@ -112,19 +112,6 @@
       width: 28px;
       height: 28px;
     }
-    audio {
-      margin-top: 2rem;
-      width: 90%;
-      max-width: 400px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px #7c3aedaa;
-    }
-    .hint {
-      font-size: 0.9rem;
-      color: #ccc;
-      margin-top: 0.5rem;
-      display: none;
-    }
   </style>
 </head>
 <body>
@@ -149,30 +136,102 @@
         <img src="https://i.ibb.co/8QX4p2G/63-20250721174520.png" alt="X icon">
       </a>
     </nav>
-
-    <!-- ปุ่มควบคุมเสียง -->
-    <audio id="bg-music" controls loop></audio>
-    <p class="hint" id="hint">WEBSITE MADE BY @IMC72S</p>
   </div>
 
-  <script>
-    const audioElement = document.getElementById('bg-music');
-    const hint = document.getElementById('hint');
+  <!-- 🔊 Background Music -->
+  <audio autoplay loop style="display: none;">
+    <source src="https://www.dropbox.com/scl/fi/huko8ujx31ee60nd02q6g/2-phut-funk.mp3?rlkey=nwafwdiq7otd570udcb432ot8&raw=1" type="audio/mpeg">
+    เบราว์เซอร์ของคุณไม่รองรับเสียง
+  </audio>
 
-    fetch('https://github.com/LIRULILUHUB/Assets-SS/raw/refs/heads/main/2%20phut%20funk.mp3')
-      .then(response => {
-        if (!response.ok) throw new Error('โหลดเสียงไม่ได้');
-        return response.blob();
-      })
-      .then(blob => {
-        const url = URL.createObjectURL(blob);
-        audioElement.src = url;
-        return audioElement.play();
-      })
-      .catch(err => {
-        console.warn('เบราว์เซอร์อาจบล็อก autoplay:', err);
-        hint.style.display = 'block';
+  <script>
+    const themeColors = ["#9b5de5", "#5a3eaa", "#f3e8ff", "#7c3aed"];
+
+    function createFirework(x, y) {
+      const fireworkContainer = document.createElement('div');
+      fireworkContainer.style.position = 'fixed';
+      fireworkContainer.style.left = `${x}px`;
+      fireworkContainer.style.top = `${y}px`;
+      fireworkContainer.style.pointerEvents = 'none';
+      fireworkContainer.style.zIndex = 9999;
+
+      for (let i = 0; i < 20; i++) {
+        const particle = document.createElement('div');
+        const color = themeColors[Math.floor(Math.random() * themeColors.length)];
+        particle.style.position = 'absolute';
+        particle.style.width = '8px';
+        particle.style.height = '8px';
+        particle.style.background = color;
+        particle.style.borderRadius = '50%';
+        particle.style.left = '0px';
+        particle.style.top = '0px';
+        particle.style.transform = `translate(0, 0) scale(1)`;
+        particle.style.opacity = '1';
+        particle.style.transition = 'all 700ms ease-out';
+
+        const angle = Math.random() * 2 * Math.PI;
+        const distance = 50 + Math.random() * 30;
+        const dx = Math.cos(angle) * distance;
+        const dy = Math.sin(angle) * distance;
+
+        setTimeout(() => {
+          particle.style.transform = `translate(${dx}px, ${dy}px) scale(0.5)`;
+          particle.style.opacity = '0';
+        }, 10);
+
+        fireworkContainer.appendChild(particle);
+      }
+
+      document.body.appendChild(fireworkContainer);
+      setTimeout(() => {
+        fireworkContainer.remove();
+      }, 800);
+    }
+
+    function getAllVisibleElements(el) {
+      const result = [];
+      const stack = [el];
+      while (stack.length) {
+        const current = stack.pop();
+        if (
+          current.nodeType === 1 &&
+          current.tagName !== "SCRIPT" &&
+          current.tagName !== "STYLE"
+        ) {
+          result.push(current);
+          for (let i = current.children.length - 1; i >= 0; i--) {
+            stack.push(current.children[i]);
+          }
+        }
+      }
+      return result;
+    }
+
+    document.querySelectorAll('.social-links a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const rect = link.getBoundingClientRect();
+        const x = rect.left + rect.width / 2;
+        const y = rect.top + rect.height / 2;
+
+        createFirework(x, y);
+
+        const allElements = getAllVisibleElements(document.body).reverse();
+        allElements.forEach((el, index) => {
+          setTimeout(() => {
+            el.style.transition = 'all 0.4s ease';
+            el.style.transform = 'scale(0.85)';
+            el.style.opacity = '0';
+          }, index * 60);
+        });
+
+        const totalDuration = allElements.length * 60 + 500;
+        setTimeout(() => {
+          window.location.href = link.href;
+        }, totalDuration);
       });
+    });
   </script>
 </body>
 </html>
