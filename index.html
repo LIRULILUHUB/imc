@@ -1,107 +1,87 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bio Link</title>
-    <style>
-        body {
-            background: linear-gradient(135deg, rgba(255, 182, 193, 0.5), rgba(255, 105, 180, 0.5)); /* พื้นหลังสีชมพูมัว */
-            font-family: Arial, sans-serif;
-            text-align: center;
-            color: #4a148c; /* สีม่วงเข้ม */
-            overflow: hidden; /* ป้องกันการเลื่อน */
-            height: 100vh; /* ทำให้เต็มหน้าจอ */
-            margin: 0; /* ลบ margin ของ body */
-            position: relative; /* สำหรับเอฟเฟคแสง */
-        }
-
-        .marquee {
-            font-size: 2.5em;
-            color: transparent; /* ทำให้ข้อความโปร่งใส */
-            position: relative; /* สำหรับการเลื่อน */
-            overflow: hidden; /* ป้องกันการเลื่อน */
-            white-space: nowrap; /* ป้องกันการตัดบรรทัด */
-        }
-
-        .marquee::before {
-            content: "WELCOME! IMC PAGE✨❤️"; /* ข้อความที่จะแสดง */
-            position: absolute;
-            left: 100%; /* เริ่มจากด้านขวา */
-            animation: slide 10s linear infinite; /* เอฟเฟคเลื่อน */
-            background: linear-gradient(90deg, #ff0080, #ff8c00, #ffd700, #00ff00, #00ffff, #0000ff, #800080); /* สีรุ้ง */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        @keyframes slide {
-            0% {
-                transform: translateX(0); /* เริ่มจากด้านขวา */
-            }
-            100% {
-                transform: translateX(-100%); /* เลื่อนไปด้านซ้าย */
-            }
-        }
-
-        .container {
-            margin-top: 50px;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            background: rgba(255, 255, 255, 0.8); /* พื้นหลังสีขาวมัว */
-            border: 2px solid rgba(255, 105, 180, 1); /* ขอบสีชมพู */
-            width: 300px; /* กำหนดความกว้างของกรอบ */
-            margin-left: auto; /* จัดกลาง */
-            margin-right: auto; /* จัดกลาง */
-            position: relative; /* สำหรับเอฟเฟคแสง */
-            overflow: hidden; /* ป้องกันการเลื่อน */
-        }
-
-        .profile-image {
-            width: 100px; /* ขนาดของรูปโปรไฟล์ */
-            height: 100px; /* ขนาดของรูปโปรไฟล์ */
-            border-radius: 50%; /* ทำให้เป็นวงกลม */
-            margin-bottom: 20px; /* ระยะห่างด้านล่าง */
-            border: 3px solid rgba(255, 105, 180, 1); /* ขอบสีชมพู */
-            object-fit: cover; /* ป้องกันการเบี้ยวของภาพ */
-        }
-
-        a {
-            display: block;
-            margin: 10px 0; /* ระยะห่างระหว่างปุ่ม */
-            padding: 15px 0; /* ปรับ padding ให้เท่ากัน */
-            text-decoration: none;
-            color: #4a148c; /* สีม่วงเข้ม */
-            background-color: rgba(255, 255, 255, 0.9); /* พื้นหลังปุ่มสีขาวโปร่งแสง */
-            border-radius: 5px;
-            border: 2px solid rgba(255, 105, 180, 0.8); /* ขอบสีชมพู */
-            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* เอฟเฟคการเปลี่ยนสี */
-            font-size: 1.2em; /* ขนาดตัวอักษร */
-            width: 100%; /* กำหนดความกว้างของปุ่มให้พอดีกับกรอบ */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* เงา */
-            position: relative; /* สำหรับเอฟเฟค */
-            z-index: 1; /* อยู่ด้านหน้า */
-        }
-
-        a:hover {
-            background-color: rgba(255, 228, 225, 0.9); /* สีชมพูอ่อนเมื่อ hover */
-            transform: translateY(-3px); /* ยกขึ้นเมื่อ hover */
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* เงาเมื่อ hover */
-        }
-
-        a:active {
-            transform: translateY(1px); /* เอฟเฟคเมื่อกด */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* เงาเมื่อกด */
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bio - imc72s</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+    * { margin:0; padding:0; box-sizing:border-box; transition:all .4s ease; }
+    body {
+      font-family:'Poppins',sans-serif;
+      background:linear-gradient(135deg,#2a1a52,#4e3a8c,#f4f1ea);
+      color:#f0e6d2; min-height:100vh; display:flex;
+      justify-content:center; align-items:center;
+      padding:2rem; overflow-x:hidden;
+    }
+    .container {
+      background:rgba(45,32,90,0.85); max-width:420px;
+      width:100%; border-radius:25px;
+      box-shadow:0 0 25px rgba(100,72,190,0.6);
+      padding:2.5rem 2rem; text-align:center;
+      position:relative; overflow:hidden;
+      backdrop-filter:blur(15px);
+      animation:fadeInUp 1s ease forwards;
+    }
+    .container::before {
+      content:''; position:absolute; top:-50%; left:-50%;
+      width:200%; height:200%;
+      background:linear-gradient(45deg,#9b5de5,#5a3eaa,#f3e8ff,#7c3aed);
+      animation:rotate 12s linear infinite;
+      filter:blur(40px); z-index:0;
+    }
+    .container>* { position:relative; z-index:1; }
+    @keyframes rotate { 0%{transform:rotate(0deg);}100%{transform:rotate(360deg);} }
+    @keyframes fadeInUp { 0%{opacity:0;transform:translateY(40px);}100%{opacity:1;transform:translateY(0);} }
+    .profile-img {
+      width:150px; height:150px; margin:0 auto 1.6rem;
+      border-radius:50%; border:5px solid #9b5de5;
+      box-shadow:0 0 30px #7c3aedaa; object-fit:cover;
+      animation:pulseGlow 3s ease-in-out infinite;
+    }
+    @keyframes pulseGlow {
+      0%,100%{box-shadow:0 0 30px #7c3aedaa; transform:scale(1);}
+      50%{box-shadow:0 0 50px #d6bfffcc; transform:scale(1.05);}
+    }
+    h1 { font-weight:600; font-size:2rem; color:#f4f1ea; text-shadow:0 0 10px #9b5de5; margin-bottom:.3rem;}
+    p.bio-text { font-weight:300; font-size:1rem; color:#d8d2c4; margin-bottom:2rem; text-shadow:0 0 6px #5a3eaaaa; line-height:1.4;}
+    .social-links { display:flex; justify-content:center; gap:25px; }
+    .social-links a {
+      position:relative;
+      display:flex; align-items:center; justify-content:center;
+      width:55px; height:55px; border-radius:50%;
+      overflow:hidden; cursor:pointer;
+      transition:all .3s ease;
+    }
+    .social-links a:hover { transform:scale(1.2) rotate(10deg); }
+    .social-links img {
+      width:28px; height:28px;
+    }
+  </style>
 </head>
 <body>
-    <div class="marquee"></div> <!-- ข้อความที่จะแสดง -->
-    <img src="https://i.imgur.com/8bM36LS.png" alt="Profile Image" class="profile-image"> <!-- รูปโปรไฟล์ -->
-    <div class="container">
-        <a href="https://tiktok.com/@imc72s" target="_blank">TikTok: @imc72s</a>
-        <a href="https://www.instagram.com/imc72s/profilecard/?igsh=MTJ6bGo5ZDYxbjFlNg==" target="_blank">Instagram: @imc72s</a>
-        <a href="https://x.com/imc72s?t=DXMALZZQi0OTLKxF9S8qiQ&s=09" target="_blank">X (Twitter): @imc72s</a>
-    </div>
+  <div class="container" role="main" aria-label="User bio and social links">
+    <img
+      src="https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/2ce776fd9d749cf001429d01929d1068~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=9df53eed&x-expires=1753257600&x-signature=tAQIofCtWw74BAoaIEEF5qymV%2Bg%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my" 
+    alt="Profile picture of imc72s"
+      alt="Profile picture of imc72s"
+      class="profile-img"
+      loading="lazy"
+    />
+    <h1>imc72s</h1>
+    <p class="bio-text">🤍WELCOME!🤍<br>! FOLLOW ME ON !</p>
+
+    <nav class="social-links" aria-label="Social media links">
+      <a href="https://tiktok.com/@imc72s" target="_blank" rel="noopener noreferrer" data-tooltip="TikTok">
+        <img src="https://i.ibb.co/Xfdj4RZh/63-20250721174435.png" alt="TikTok icon">
+      </a>
+      <a href="https://www.instagram.com/imc72s/" target="_blank" rel="noopener noreferrer" data-tooltip="Instagram">
+        <img src="https://i.ibb.co/nN2cnmC7/63-20250721174458.png" alt="Instagram icon">
+      </a>
+      <a href="https://x.com/imc72s" target="_blank" rel="noopener noreferrer" data-tooltip="X (Twitter)">
+        <img src="https://i.ibb.co/8QX4p2G/63-20250721174520.png" alt="X icon">
+      </a>
+    </nav>
+  </div>
 </body>
 </html>
