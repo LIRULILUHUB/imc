@@ -176,7 +176,7 @@
     copyBtn.addEventListener('click',()=>{
       const links = Array.from(document.querySelectorAll('.link-card')).map(l => l.href).join('\n');
       navigator.clipboard.writeText(links);
-      alert('COPIE !');
+      alert('COPIE ! ');
     });
 
     for(let i=0;i<60;i++){
