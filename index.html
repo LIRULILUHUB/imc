@@ -1,236 +1,201 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bio - imc72s</title>
+  <title>IMC72s — ช่องทาง</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap:wght@300;400;600&family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
+
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
-    * {
-      margin: 0; padding: 0;
-      box-sizing: border-box;
-      transition: all 0.4s ease;
+    :root{
+      --bg1: #0f1226;
+      --bg2: #0b1630;
+      --accent1: #9b5cff;
+      --accent2: #55d8ff;
+      --text: #eaf6ff;
+      --muted: rgba(234,246,255,0.7);
+      --sparkle: rgba(255,255,255,0.3);
     }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #2a1a52, #4e3a8c, #f4f1ea);
-      color: #f0e6d2;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem;
-      overflow-x: hidden;
-      flex-direction: column;
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;font-family:'Kanit','Comic Neue',sans-serif;background:var(--bg1);color:var(--text);overflow-x:hidden;}
+    body{background:linear-gradient(180deg,var(--bg1) 0%,var(--bg2) 100%);}
+
+    .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px;position:relative;z-index:1;}
+
+    .card{
+      width:100%;max-width:980px;
+      background:rgba(20,20,40,0.85);
+      border-radius:18px;padding:32px;position:relative;overflow:hidden;
+      backdrop-filter: blur(12px);
+      box-shadow:0 10px 40px rgba(0,0,0,0.6);
+      border:1px solid rgba(255,255,255,0.08);
+      animation:fadeIn 1s ease;
     }
-    .container {
-      background: rgba(45,32,90,0.85);
-      max-width: 420px;
-      width: 100%;
-      border-radius: 25px;
-      box-shadow: 0 0 25px rgba(100,72,190,0.6);
-      padding: 2.5rem 2rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(15px);
-      animation: fadeInUp 1s ease forwards;
+
+    @keyframes fadeIn {from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)}}
+
+    .header{display:flex;gap:16px;align-items:center}
+    .avatar{width:96px;height:96px;border-radius:18px;overflow:hidden;flex:0 0 96px}
+    .avatar img{width:100%;height:100%;object-fit:cover;animation:avatarPop 2s infinite alternate;}
+
+    @keyframes avatarPop {from{transform:scale(1)} to{transform:scale(1.05)}}
+
+    .title{flex:1}
+    .title h1{margin:0;font-size:22px;color:var(--text);letter-spacing:1px}
+    .title p{margin:6px 0 0;color:var(--muted);font-size:14px}
+
+    .links{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+    @media(max-width:820px){.links{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:520px){.links{grid-template-columns:1fr}}
+
+    .link-card{
+      background:rgba(30,30,50,0.7);
+      border-radius:14px;padding:14px;
+      display:flex;gap:12px;align-items:center;
+      border:1px solid rgba(155,92,255,0.2);
+      transition:all .4s ease;
+      position:relative;
+      overflow:hidden;
+      cursor:pointer;
+      animation:cardFade .8s forwards;
     }
-    .container::before {
-      content: '';
+
+    .link-card:nth-child(1){animation-delay:.2s}
+    .link-card:nth-child(2){animation-delay:.35s}
+    .link-card:nth-child(3){animation-delay:.5s}
+    .link-card:nth-child(4){animation-delay:.65s}
+    .link-card:nth-child(5){animation-delay:.8s}
+    .link-card:nth-child(6){animation-delay:.95s}
+
+    @keyframes cardFade {to{opacity:1;transform:translateY(0)}}
+
+    .link-card:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 15px 35px rgba(155,92,255,0.3);}
+
+    .link-card .logo{width:54px;height:54px;border-radius:50%;flex:0 0 54px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.08);position:relative;overflow:hidden}
+    .link-card .logo img{width:54px;height:54px;object-fit:cover;}
+
+    .link-card .meta h3{margin:0;font-size:15px;background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    .link-card .meta p{margin:4px 0 0;font-size:12px;color:var(--muted)}
+
+    .footer{margin-top:18px;display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted)}
+
+    .brand-stroke{font-weight:700;padding:6px 12px;border-radius:999px;background:linear-gradient(90deg,rgba(155,92,255,0.18),rgba(85,216,255,0.12))}
+
+    .site-label{font-size:15px;font-weight:700;background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;cursor:pointer;transition:opacity .3s}
+    .site-label:hover{opacity:.7}
+
+    /* Sparkle background */
+    .sparkle {
       position: absolute;
-      top: -50%; left: -50%;
-      width: 200%; height: 200%;
-      background: linear-gradient(45deg, #9b5de5, #5a3eaa, #f3e8ff, #7c3aed);
-      animation: rotate 12s linear infinite;
-      filter: blur(40px);
-      z-index: 0;
-    }
-    .container > * {
-      position: relative;
-      z-index: 1;
-      transition: all 0.5s ease;
-    }
-    @keyframes rotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    @keyframes fadeInUp {
-      0% { opacity: 0; transform: translateY(40px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-    .profile-img {
-      width: 150px;
-      height: 150px;
-      margin: 0 auto 1.6rem;
+      width: 4px;
+      height: 4px;
+      background: var(--sparkle);
       border-radius: 50%;
-      border: 5px solid #9b5de5;
-      box-shadow: 0 0 30px #7c3aedaa;
-      object-fit: cover;
-      animation: pulseGlow 3s ease-in-out infinite;
+      pointer-events: none;
+      animation: floatUp linear infinite;
     }
-    @keyframes pulseGlow {
-      0%, 100% { box-shadow: 0 0 30px #7c3aedaa; transform: scale(1); }
-      50% { box-shadow: 0 0 50px #d6bfffcc; transform: scale(1.05); }
+
+    @keyframes floatUp {
+      0% {transform: translateY(0) scale(1); opacity:1;}
+      100% {transform: translateY(-200px) scale(0.5); opacity:0;}
     }
-    h1 {
-      font-weight: 600;
-      font-size: 2rem;
-      color: #f4f1ea;
-      text-shadow: 0 0 10px #9b5de5;
-      margin-bottom: .3rem;
+
+    /* Mouse trail effect */
+    .trail {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius:50%;
+      background: linear-gradient(45deg,var(--accent1),var(--accent2));
+      pointer-events:none;
+      mix-blend-mode: lighten;
+      animation:trailFade 0.6s forwards;
     }
-    p.bio-text {
-      font-weight: 300;
-      font-size: 1rem;
-      color: #d8d2c4;
-      margin-bottom: 2rem;
-      text-shadow: 0 0 6px #5a3eaaaa;
-      line-height: 1.4;
-    }
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-    }
-    .social-links a {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      overflow: hidden;
-      cursor: pointer;
-      transition: all .3s ease;
-    }
-    .social-links a:hover {
-      transform: scale(1.2) rotate(10deg);
-    }
-    .social-links img {
-      width: 28px;
-      height: 28px;
-    }
+
+    @keyframes trailFade {from{opacity:1} to{opacity:0;transform:scale(0)}}
   </style>
 </head>
 <body>
-  <div class="container" role="main" aria-label="User bio and social links">
-    <img
-      src="https://i.ibb.co/5h7xwZgF/2ce776fd9d749cf001429d01929d1068-tplv-tiktokx-cropcenter-1080-1080.jpg"
-      alt="Profile picture of imc72s"
-      class="profile-img"
-      loading="lazy"
-    />
-    <h1>imc72s</h1>
-    <p class="bio-text">🤍WELCOME!🤍<br>! FOLLOW ME ON !</p>
+  <div class="wrap">
+    <div class="card">
+      <div class="header">
+        <div class="avatar"><img src="https://i.ibb.co/5h7xwZgF/2ce776fd9d749cf001429d01929d1068-tplv-tiktokx-cropcenter-1080-1080.jpg"></div>
+        <div class="title">
+          <h1>IMC72s <span class="brand-stroke">ALL SOCAILS</span></h1>
+          <p>Socails — Instagram, TikTok, X, Roblox</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
+          <div class="site-label" id="copyBtn">CARAMEL SITE</div>
+          <div style="font-size:12px;color:var(--muted)">CLICK HERE TO COPY ALL LINK</div>
+        </div>
+      </div>
 
-    <nav class="social-links" aria-label="Social media links">
-      <a href="https://tiktok.com/@imc72s" target="_blank" rel="noopener noreferrer">
-        <img src="https://i.ibb.co/Xfdj4RZh/63-20250721174435.png" alt="TikTok icon">
-      </a>
-      <a href="https://www.instagram.com/imc72s/" target="_blank" rel="noopener noreferrer">
-        <img src="https://i.ibb.co/nN2cnmC7/63-20250721174458.png" alt="Instagram icon">
-      </a>
-      <a href="https://x.com/imc72s" target="_blank" rel="noopener noreferrer">
-        <img src="https://i.ibb.co/8QX4p2G/63-20250721174520.png" alt="X icon">
-      </a>
-    </nav>
+      <div class="links" id="linksList">
+        <a class="link-card" href="https://www.instagram.com/imc72s/" target="_blank">
+          <div class="logo"><img src="https://i.ibb.co/nN2cnmC7/63-20250721174458.png"></div>
+          <div class="meta"><h3>Instagram</h3><p>@imc72s</p></div>
+        </a>
+
+        <a class="link-card" href="https://www.tiktok.com/@imc72s" target="_blank">
+          <div class="logo"><img src="https://i.ibb.co/Xfdj4RZh/63-20250721174435.png"></div>
+          <div class="meta"><h3>TikTok</h3><p>@imc72s</p></div>
+        </a>
+
+        <a class="link-card" href="https://x.com/imc72s" target="_blank">
+          <div class="logo"><img src="https://i.ibb.co/8QX4p2G/63-20250721174520.png"></div>
+          <div class="meta"><h3>X (Twitter)</h3><p>@imc72s</p></div>
+        </a>
+
+        <a class="link-card" href="https://www.roblox.com/users/8555835580/profile" target="_blank">
+          <div class="logo"><img src="https://i.ibb.co/HpnT0vTL/image.png"></div>
+          <div class="meta"><h3>@4Q4II</h3><p>PROFILE</p></div>
+        </a>
+
+        <a class="link-card" href="https://www.roblox.com/users/5162631610/profile" target="_blank">
+          <div class="logo"><img src="https://i.ibb.co/HpnT0vTL/image.png"></div>
+          <div class="meta"><h3>@IMCOOL08972</h3><p>PROFILE</p></div>
+        </a>
+
+        <a class="link-card" href="https://www.roblox.com/users/8555790190/profile" target="_blank">
+          <div class="logo"><img src="https://i.ibb.co/HpnT0vTL/image.png"></div>
+          <div class="meta"><h3>@4Q4ll</h3><p>PROFILE</p></div>
+        </a>
+      </div>
+
+      <div class="footer">
+        <div>HELLO WELCOME TO MY SITE !</div>
+        <div>MADE BY CARAMEL</div>
+      </div>
+    </div>
   </div>
 
-  <!-- 🔊 Background Music -->
-  <audio autoplay loop style="display: none;">
-    <source src="https://www.dropbox.com/scl/fi/huko8ujx31ee60nd02q6g/2-phut-funk.mp3?rlkey=nwafwdiq7otd570udcb432ot8&raw=1" type="audio/mpeg">
-    เบราว์เซอร์ของคุณไม่รองรับเสียง
-  </audio>
-
   <script>
-    const themeColors = ["#9b5de5", "#5a3eaa", "#f3e8ff", "#7c3aed"];
+    const copyBtn=document.getElementById('copyBtn');
+    copyBtn.addEventListener('click',()=>{
+      const links = Array.from(document.querySelectorAll('.link-card')).map(l => l.href).join('\n');
+      navigator.clipboard.writeText(links);
+      alert('คัดลอกลิงก์ทั้งหมดเรียบร้อย!');
+    });
 
-    function createFirework(x, y) {
-      const fireworkContainer = document.createElement('div');
-      fireworkContainer.style.position = 'fixed';
-      fireworkContainer.style.left = `${x}px`;
-      fireworkContainer.style.top = `${y}px`;
-      fireworkContainer.style.pointerEvents = 'none';
-      fireworkContainer.style.zIndex = 9999;
-
-      for (let i = 0; i < 20; i++) {
-        const particle = document.createElement('div');
-        const color = themeColors[Math.floor(Math.random() * themeColors.length)];
-        particle.style.position = 'absolute';
-        particle.style.width = '8px';
-        particle.style.height = '8px';
-        particle.style.background = color;
-        particle.style.borderRadius = '50%';
-        particle.style.left = '0px';
-        particle.style.top = '0px';
-        particle.style.transform = `translate(0, 0) scale(1)`;
-        particle.style.opacity = '1';
-        particle.style.transition = 'all 700ms ease-out';
-
-        const angle = Math.random() * 2 * Math.PI;
-        const distance = 50 + Math.random() * 30;
-        const dx = Math.cos(angle) * distance;
-        const dy = Math.sin(angle) * distance;
-
-        setTimeout(() => {
-          particle.style.transform = `translate(${dx}px, ${dy}px) scale(0.5)`;
-          particle.style.opacity = '0';
-        }, 10);
-
-        fireworkContainer.appendChild(particle);
-      }
-
-      document.body.appendChild(fireworkContainer);
-      setTimeout(() => {
-        fireworkContainer.remove();
-      }, 800);
+    for(let i=0;i<60;i++){
+      let sparkle = document.createElement('div');
+      sparkle.classList.add('sparkle');
+      sparkle.style.left = Math.random()*window.innerWidth+'px';
+      sparkle.style.top = Math.random()*window.innerHeight+'px';
+      sparkle.style.width = sparkle.style.height = (Math.random()*3 + 2)+'px';
+      sparkle.style.animationDuration = (Math.random()*5 + 3)+'s';
+      document.body.appendChild(sparkle);
     }
 
-    function getAllVisibleElements(el) {
-      const result = [];
-      const stack = [el];
-      while (stack.length) {
-        const current = stack.pop();
-        if (
-          current.nodeType === 1 &&
-          current.tagName !== "SCRIPT" &&
-          current.tagName !== "STYLE"
-        ) {
-          result.push(current);
-          for (let i = current.children.length - 1; i >= 0; i--) {
-            stack.push(current.children[i]);
-          }
-        }
-      }
-      return result;
-    }
-
-    document.querySelectorAll('.social-links a').forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-
-        const rect = link.getBoundingClientRect();
-        const x = rect.left + rect.width / 2;
-        const y = rect.top + rect.height / 2;
-
-        createFirework(x, y);
-
-        const allElements = getAllVisibleElements(document.body).reverse();
-        allElements.forEach((el, index) => {
-          setTimeout(() => {
-            el.style.transition = 'all 0.4s ease';
-            el.style.transform = 'scale(0.85)';
-            el.style.opacity = '0';
-          }, index * 60);
-        });
-
-        const totalDuration = allElements.length * 60 + 500;
-        setTimeout(() => {
-          window.location.href = link.href;
-        }, totalDuration);
-      });
+    document.addEventListener('mousemove', e => {
+      let trail = document.createElement('div');
+      trail.classList.add('trail');
+      trail.style.left = e.clientX+'px';
+      trail.style.top = e.clientY+'px';
+      document.body.appendChild(trail);
+      setTimeout(()=>trail.remove(),600);
     });
   </script>
 </body>
