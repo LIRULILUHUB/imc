@@ -3,26 +3,60 @@
 <head>
 <audio id="bgMusic" loop>
   <source src="https://github.com/LIRULILUHUB/Assets-SS/raw/refs/heads/main/2%20phut%20funk.mp3" type="audio/mp3">
-  Your browser does not support the audio element.
 </audio>
 
 <script>
 const music = document.getElementById('bgMusic');
+let fadeInterval = null;
+const fadeStep = 0.1; // ปรับความเร็ว fade
+const fadeIntervalTime = 50; // ms
 
-// เล่นอัตโนมัติครั้งแรก (ต้องให้ผู้ใช้คลิกก่อนบาง browser)
+// เล่นเพลงตอนโหลด
 document.addEventListener('DOMContentLoaded', () => {
-  music.play().catch(()=>{}); // catch เพื่อไม่ให้ error
+  music.volume = 1;
+  music.play().catch(()=>{});
 });
 
-// Page Visibility API
+// ฟังก์ชัน fade out
+function fadeOut() {
+  clearInterval(fadeInterval);
+  fadeInterval = setInterval(() => {
+    if(music.volume > fadeStep){
+      music.volume -= fadeStep;
+    } else {
+      music.volume = 0;
+      music.pause();
+      clearInterval(fadeInterval);
+    }
+  }, fadeIntervalTime);
+}
+
+// ฟังก์ชัน fade in
+function fadeIn() {
+  music.play().catch(()=>{});
+  clearInterval(fadeInterval);
+  fadeInterval = setInterval(() => {
+    if(music.volume < 1 - fadeStep){
+      music.volume += fadeStep;
+    } else {
+      music.volume = 1;
+      clearInterval(fadeInterval);
+    }
+  }, fadeIntervalTime);
+}
+
+// Page Visibility API + fade
 document.addEventListener('visibilitychange', () => {
   if(document.hidden){
-    music.pause(); // ถ้าออกจากแท็บ ให้หยุดเพลงชั่วคราว
+    fadeOut();
   } else {
-    music.play().catch(()=>{}); // เมื่อกลับมาที่แท็บ ให้เล่นต่อ
+    fadeIn();
   }
 });
 </script>
+
+
+  
 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
